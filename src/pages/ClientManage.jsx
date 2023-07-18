@@ -5,7 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import Spinner from "../components/Spinner";
 import ClientShow from "../components/ClientShow";
-import SearchBar2 from "../components/SearchBar";
+import SearchBar2 from "../components/SearchBar2";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import ScrollToTopButton from "../components/ScrollToTopButton";
@@ -58,10 +58,13 @@ export default function ClientManage() {
               >
                 Client Management
               </h1>
+
           {/* -------------------------------------------------------- */}
           <div 
           className="flex justify-between items-center mr-5 mb-12">
-            <SearchBar2 data2={clientList}>Search by Name</SearchBar2>
+            <SearchBar2 
+            data2={clientList}
+            >Search by Name</SearchBar2>
             <Link to='/create-client'>
             <Button>New Client</Button>
             </Link>
@@ -74,7 +77,10 @@ export default function ClientManage() {
                 <div>
                   <ul>
                     {clientList.map((doc) => (
-                      <ClientShow key={doc.id} id={doc.id} client={doc.data} />
+                      <ClientShow 
+                      key={doc.id} 
+                      id={doc.id} 
+                      client={doc.data} />
                     ))}
                   </ul>
                 </div>

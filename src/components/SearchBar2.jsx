@@ -1,8 +1,10 @@
 import { MdClear } from "react-icons/md";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
-export default function SearchBar({ placeholder, data2, children, link }) {
+
+export default function SearchBar2({ placeholder, data2, children }) {
   const [wordEntered, setWordEntered] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const navigate = useNavigate();
@@ -28,6 +30,7 @@ export default function SearchBar({ placeholder, data2, children, link }) {
     setWordEntered("");
   };
 
+  
   return (
     <div className="relative w-[50%] ">
       <input
@@ -84,14 +87,14 @@ export default function SearchBar({ placeholder, data2, children, link }) {
         >
           {filteredData.slice(0, 5).map((value, key) => {
             return (
-              // <Link key={key} to={`/category/${value.data.category}/${value.id}`}>
+              <Link key={key} to={`/client-manage/${value.id}`}>
                 <p
                   className="mt-2 truncate
               cursor-pointer hover:font-semibold"
                 >
                   {value.data.name}
                 </p>
-              // </Link>
+              </Link>
             );
           })}
         </div>
